@@ -3,10 +3,11 @@ var app = express();
 const bodyParser = require('body-parser');
 const Blockchain = require('./blockchain');
 const { v1: uuidv1 } = require('uuid');
+const sha256 = require('sha256');
 const port = process.argv[2];
 const rp = require('request-promise');
 
-const nodeAddress = uuidv1().split('-').join('');
+const nodeAddress = sha256(uuidv1().split('-').join(''));
 
 console.log(nodeAddress);
 

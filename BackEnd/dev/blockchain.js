@@ -54,6 +54,8 @@ Blockchain.prototype.getLastBlock = function() {
     return this.chain[this.chain.length - 1];
 }
 
+// createNewTransaction generates a transaction object
+
 Blockchain.prototype.createNewTransaction = function(amount, sender, recipient) {
     const newTransaction = {
         amount: amount,
@@ -63,6 +65,8 @@ Blockchain.prototype.createNewTransaction = function(amount, sender, recipient) 
     };
     return newTransaction;
 }
+
+// sendNewTransaction pushes a new transaction object into the pendingTransactions array
 
 Blockchain.prototype.sendNewTransaction = function(newtransaction) {
     this.pendingTransactions.push(newtransaction);
