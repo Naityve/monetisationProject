@@ -3,7 +3,7 @@ const rp = require('request-promise');
 
 const TestChain = new Blockchain();
 
-const bc1 = {
+const sampleChain = {
     "chain": [
     {
     "index": 1,
@@ -136,6 +136,6 @@ const bc1 = {
     "networkNodes": []
     };
     
-    console.log('Valid: ',TestChain.chainIsValid(bc1.chain));
+    console.log('Valid: ',TestChain.chainIsValid(sampleChain.chain));
 
     
