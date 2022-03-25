@@ -1,0 +1,67 @@
+<!--
+    
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dev/css/game.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <title>Game</title>
+
+</head>
+
+<body>
+
+    <div class="container"> 
+        <header>
+            <h1 class="page__Title">Game</h1>
+
+            <nav>
+
+                <ul class="nav__links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="game.html">Game</a></li>
+                    <li><a href="wallet.html">Wallet</a></li>
+                    <li><a href="login.html">Logout</a></li>
+                </ul>
+
+            </nav>
+
+        </header>
+
+        <div class="win__btn"> 
+            <button class="button" type="submit">WinCondition</button>
+        </div>
+    </div>
+    <!--
+    <script>
+        window.app = angular.module('BlockExplorer', []);
+
+        app.controller('MainController', function($scope, $http) {
+            $scope.block = null;
+            $scope.transaction = null;
+            $scope.addressData = null;
+            $scope.initialSearchMade = false;
+
+            $scope.fetchBlock = function(blockHash) {
+                $http.get(`/block/${blockHash}`)
+                .then(response => {
+                    $scope.block = response.data.block;
+                    $scope.transaction = null;
+                    $scope.addressData = null;
+                });
+            };
+        });
+    </script>
+    -->
+
+</body>
+
+</html>

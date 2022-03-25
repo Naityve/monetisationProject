@@ -304,6 +304,10 @@ app.get('/address/:address', function(req,res) {
     };
 });
 
+app.get('/game', function(req, res) {
+    res.sendFile('./FrontEnd/game.html')
+});
+
 app.listen(port, function() {
     console.log(`listening on port ${port}...`);
 });
