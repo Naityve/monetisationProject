@@ -78,6 +78,7 @@ Blockchain.prototype.sendNewTransaction = function(newtransaction) {
     return this.getLastBlock(['index']) + 1;
 }
 
+
 Blockchain.prototype.hashBlock = function(previousBlockHash, currentBlockData, nonce) {
     const dataAsString = previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData); //Combines function parameters into a single string
     const hash = sha256(dataAsString); //creates a single string hash of dataAsString

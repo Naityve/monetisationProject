@@ -96,7 +96,7 @@ app.get('/mine',function(req,res) {
             body: {
                 amount: 100,
                 sender: "00",
-                recipient: nodeAddress 
+                recipient: nodeAddress
             },
             json: true
         };
@@ -306,6 +306,27 @@ app.get('/address/:address', function(req,res) {
 
 app.get('/game', function(req, res) {
     res.sendFile('./FrontEnd/game.html', {root: __dirname});
+});
+
+app.post('/transaction/reward', function(req, res) {
+
+    const requestPromises = []
+
+    Promise.all(requestPromises).then(data => {
+        const requestOptions = {
+            uri: Chain.currentNodeUrl + '/transaction/broadcast',
+            method: 'POST',
+            body: {
+                amount: 100,
+                sender: "00",
+                recipient: nodeAddress 
+            },
+            json: true
+        };
+
+        return rp(requestOptions);
+
+    });
 });
 
 app.listen(port, function() {
