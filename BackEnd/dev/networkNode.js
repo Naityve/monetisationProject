@@ -305,7 +305,7 @@ app.get('/address/:address', function(req,res) {
 });
 
 app.get('/game', function(req, res) {
-    res.sendFile('./FrontEnd/game.html')
+    res.sendFile('./FrontEnd/game.html', {root: __dirname});
 });
 
 app.listen(port, function() {
