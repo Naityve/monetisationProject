@@ -22,6 +22,25 @@ const Chain = new Blockchain();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
+// /API fetch POST test
+
+app.post('/api', function(req,res) {
+    
+    console.log(req.body)
+    const data = [];
+
+    const lat = req.body.lat;
+    const lon = req.body.lon;
+
+    const position = {
+        latitude: lat,
+        longitude: lon
+    }
+    data.push(position);
+    res.send(data);
+});
+
 //Returns the entire blockchain instance
 
 app.get('/blockchain',function(req,res) {
