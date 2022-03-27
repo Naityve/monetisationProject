@@ -11,6 +11,7 @@ const { v1: uuidv1 } = require('uuid');
 const sha256 = require('sha256');
 const port = process.argv[2];
 const rp = require('request-promise');
+const { json } = require('body-parser');
 
 const nodeAddress = sha256(uuidv1().split('-').join(''));
 
@@ -25,6 +26,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/blockchain',function(req,res) {
     res.send(Chain);
+});
+
+//Returns the node address
+
+app.get('/NodeAddress', function(req, res) {
+    
+    promises = [];
+    
+    const resData = {
+        address: nodeAddress
+    };
+
+    promises.push(resData);
+
+    res.send(promises);
 });
 
 //Submits a transaction to the PendingTransactions array of the chosen node

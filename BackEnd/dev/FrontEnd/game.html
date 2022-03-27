@@ -37,15 +37,28 @@
 
         <div class="win__btn"> 
             <button onclick="fetchChain()">fetchChain</button>
+            <button onclick="getAddress()">getAddress</button>
             <button onclick="postTransaction()">postTransaction</button>
         </div>
     </div>
     
+    <!-- JavaScript Functionality -->
+
     <script>
 
-        function fetchChain() {
+        const apiUrl = 'http://localhost:3001'
 
-            const apiUrl = 'http://localhost:3001'
+        function getAddress() {
+            async function getNodeAddress(url) {    
+                const response = await fetch(url + '/NodeAddress');
+
+                var data = await response.json();
+                console.log(data);
+            };
+            getNodeAddress(apiUrl);
+        };
+
+        function fetchChain() {
 
             async function getapi(url) {
                 const response = await fetch(url + '/blockchain');
@@ -58,8 +71,6 @@
 
         function postTransaction() {
 
-            const url = 'http://localhost:3001'
-
             const options = {
                 method: 'POST',
                 body: {
@@ -70,10 +81,11 @@
                 json: true
             };
 
-            fetch(url + '/transaction/broadcast', options);
+            fetch(apiUrl + '/transaction', options);
         };
     </script>
 
+    <!-- CSS Styling -->
 
     <style type="text/css">
         body {
