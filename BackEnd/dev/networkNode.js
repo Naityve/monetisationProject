@@ -334,6 +334,10 @@ app.get('/game', function(req, res) {
     res.sendFile('./FrontEnd/game.html', {root: __dirname});
 });
 
+app.get('/wallet', function(req,res) {
+    res.sendFile('./FrontEnd/wallet.html', {root: __dirname});
+});
+
 app.post('/transaction/reward', function(req, res) {
 
     const requestPromises = []
