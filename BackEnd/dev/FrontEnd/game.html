@@ -43,9 +43,16 @@
 
     <script>
 
-        const apiUrl = 'http://localhost:3001'
+        // User Wallet Address
 
         const address = "";
+
+        // Get node path from window url
+
+        let apiUrl = window.location.href;
+        apiUrl = apiUrl.split('/');
+        apiUrl = apiUrl[0]+'//'+apiUrl[2];
+        console.log(apiUrl);
 
         function postTransaction() {
 
