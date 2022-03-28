@@ -342,6 +342,10 @@ app.get('/index', function(req,res) {
     res.sendFile('./FrontEnd/index.html', {root: __dirname});
 });
 
+app.get('/login', function(req,res) {
+    res.sendFile('./FrontEnd/login.html', {root: __dirname});
+});
+
 app.post('/transaction/reward', function(req, res) {
 
     const requestPromises = []
