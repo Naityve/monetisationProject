@@ -228,6 +228,8 @@ app.post('/register-nodes-bulk', function(req,res) {
     res.json({note: 'Bulk Registration Complete'});
 });
 
+// Consensus ensures data integrity across all nodes in the network
+
 app.get('/consensus', function(req,res) {
     
     const requestPromises = [];
@@ -278,9 +280,10 @@ app.get('/consensus', function(req,res) {
 
 });
 
+// Blockhash endpoint that takes in a blockhash and scans the chain for a block of a matching hash.
+// Then returns the block to the client.
+
 app.get('/block/:blockHash', function(req,res) {
-    // E.g. http://localhost:3000/block/Adh17659gaff6872hkb9356ybafg2W2867g
-    // The :blockHash parameter is a hash that is passed into the query.
     const blockHash = req.params.blockHash;
 
     const correctBlock = Chain.getBlock(blockHash);
@@ -296,6 +299,9 @@ app.get('/block/:blockHash', function(req,res) {
         });
     }
 });
+
+// Transaction endpoint that takes in a transactionId hash and scans the chain for a matching transactionId.
+// Then returns the transaction and its contents to the client.
 
 app.get('/transaction/:transactionId', function(req,res) {
     const transactionId = req.params.transactionId;
@@ -314,6 +320,9 @@ app.get('/transaction/:transactionId', function(req,res) {
     };
 });
 
+// Address endpoint takes in an address and scans the chain to find a matching address.
+// Then returns the address and its transaction history to the client.
+
 app.get('/address/:address', function(req,res) {
     const address = req.params.address;
 
@@ -330,41 +339,31 @@ app.get('/address/:address', function(req,res) {
     };
 });
 
+// Retruns game.html to the client
+
 app.get('/game', function(req, res) {
     res.sendFile('./FrontEnd/game.html', {root: __dirname});
 });
+
+// Retruns wallet.html to the client
 
 app.get('/wallet', function(req,res) {
     res.sendFile('./FrontEnd/wallet.html', {root: __dirname});
 });
 
+// Retruns index.html to the client
+
 app.get('/index', function(req,res) {
     res.sendFile('./FrontEnd/index.html', {root: __dirname});
 });
+
+// Retruns login.html to the client
 
 app.get('/login', function(req,res) {
     res.sendFile('./FrontEnd/login.html', {root: __dirname});
 });
 
 app.post('/transaction/reward', function(req, res) {
-
-    const requestPromises = []
-
-    Promise.all(requestPromises).then(data => {
-        const requestOptions = {
-            uri: Chain.currentNodeUrl + '/transaction/broadcast',
-            method: 'POST',
-            body: {
-                amount: 100,
-                sender: "00",
-                recipient: nodeAddress 
-            },
-            json: true
-        };
-
-        return rp(requestOptions);
-
-    });
 });
 
 app.listen(port, function() {
