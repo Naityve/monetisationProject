@@ -24,10 +24,10 @@
             <nav>
 
                 <ul class="nav__links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="game.html">Game</a></li>
-                    <li><a href="wallet.html">Wallet</a></li>
-                    <li><a href="login.html">Logout</a></li>
+                    <li><a href="http://localhost:3001/index">Home</a></li>
+                    <li><a href="http://localhost:3001/game">Game</a></li>
+                    <li><a href="http://localhost:3001/wallet">Wallet</a></li>
+                    <li><a href="http://localhost:3001/login">Logout</a></li>
                 </ul>
 
             </nav>
@@ -46,27 +46,6 @@
         const apiUrl = 'http://localhost:3001'
 
         const address = "";
-
-        var board = null
-    
-        var game = new Chess()
-
-        function makeRandomMove () {
-        var possibleMoves = game.moves()
-
-        // exit if the game is over
-        if (game.game_over()) return
-
-        var randomIdx = Math.floor(Math.random() * possibleMoves.length)
-        game.move(possibleMoves[randomIdx])
-        board.position(game.fen())
-
-        window.setTimeout(makeRandomMove, 500)
-        }
-
-        board = Chessboard('myBoard', 'start')
-
-        window.setTimeout(makeRandomMove, 500)
 
         function postTransaction() {
 
