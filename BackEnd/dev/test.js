@@ -138,4 +138,73 @@ const sampleChain = {
     
     console.log('Valid: ',TestChain.chainIsValid(sampleChain.chain));
 
-    
+    /*
+        CODE TO FETCH GET AND POST REQUESTS FROM CLIENT TO API
+    */
+
+
+    /*
+        const apiUrl = 'http://localhost:3001'
+
+        // using fetch() to POST example
+
+        const testData = 50;
+
+        const data = {testData};
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+
+        fetch('/api', options).then(res => {
+            return res.text();
+        }).then(data => {
+            console.log("This is response", data);  
+        });
+
+        // END TEST
+
+        function getAddress() {
+            async function getNodeAddress(url) {    
+                const response = await fetch(url + '/NodeAddress');
+
+                var data = await response.json();
+                console.log(data);
+            };
+            getNodeAddress(apiUrl);
+        };
+
+        function fetchChain() {
+
+            async function getapi(url) {
+                const response = await fetch(url + '/blockchain');
+
+                var data = await response.json();
+                console.log(data);
+            }
+            getapi(apiUrl);
+        };
+
+        function postTransaction() {
+
+            const transactionData = {
+                amount: 100,
+                sender: "00",
+                recipient: "123"
+            };
+
+            const options = {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(transactionData),
+                json: true
+            };
+
+            fetch(apiUrl + '/transaction', options);
+        };
+    */

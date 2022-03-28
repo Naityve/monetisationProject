@@ -33,12 +33,6 @@
             </nav>
 
         </header>
-
-        <div class="win__btn"> 
-            <button onclick="fetchChain()">fetchChain</button>
-            <button onclick="getAddress()">getAddress</button>
-            <button onclick="postTransaction()">postTransaction</button>
-        </div>
     </div>
     
     <!-- JavaScript Functionality -->
@@ -47,47 +41,7 @@
 
         const apiUrl = 'http://localhost:3001'
 
-        // using fetch() to POST example
-
-        const testData = 50;
-
-        const data = {testData};
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        };
-
-        fetch('/api', options).then(res => {
-            return res.text();
-        }).then(data => {
-            console.log("This is response", data);  
-        });
-
-        // END TEST
-
-        function getAddress() {
-            async function getNodeAddress(url) {    
-                const response = await fetch(url + '/NodeAddress');
-
-                var data = await response.json();
-                console.log(data);
-            };
-            getNodeAddress(apiUrl);
-        };
-
-        function fetchChain() {
-
-            async function getapi(url) {
-                const response = await fetch(url + '/blockchain');
-
-                var data = await response.json();
-                console.log(data);
-            }
-            getapi(apiUrl);
-        };
+        const address = "";
 
         function postTransaction() {
 
