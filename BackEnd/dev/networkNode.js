@@ -26,19 +26,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // /API fetch POST test
 
 app.post('/api', function(req,res) {
-    
-    console.log(req.body)
-    const data = [];
-
-    const lat = req.body.lat;
-    const lon = req.body.lon;
-
-    const position = {
-        latitude: lat,
-        longitude: lon
-    }
-    data.push(position);
-    res.send(data);
+    console.log(req.body);
+    res.json(req.body);
+    console.log(req.body);
+    res.end();
 });
 
 //Returns the entire blockchain instance
