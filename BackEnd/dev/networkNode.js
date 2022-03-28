@@ -338,6 +338,10 @@ app.get('/wallet', function(req,res) {
     res.sendFile('./FrontEnd/wallet.html', {root: __dirname});
 });
 
+app.get('/index', function(req,res) {
+    res.sendFile('./FrontEnd/index.html', {root: __dirname});
+});
+
 app.post('/transaction/reward', function(req, res) {
 
     const requestPromises = []
