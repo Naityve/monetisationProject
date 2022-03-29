@@ -34,6 +34,89 @@
 
         </header>
 
+        <div class="ChessBoard">
+            <div>
+                <div class="box">&#9814;</div>
+                <div class="box black">&#9816;</div>
+                <div class="box">&#9815;</div>
+                <div class="box black">&#9813;</div>
+                <div class="box">&#9812;</div>
+                <div class="box black">&#9815;</div>
+                <div class="box">&#9816;</div>
+                <div class="box black">&#9814;</div>
+            </div>
+            <div>
+                <div class="box black">&#9817;</div>
+                <div class="box">&#9817;</div>
+                <div class="box black">&#9817;</div>
+                <div class="box">&#9817;</div>
+                <div class="box black">&#9817;</div>
+                <div class="box">&#9817;</div>
+                <div class="box black">&#9817;</div>
+                <div class="box">&#9817;</div>
+            </div>
+            <div>
+                <div class="box"></div>
+                <div class="box black"></div>
+                <div class="box"></div>
+                <div class="box black"></div>
+                <div class="box"></div>
+                <div class="box black"></div>
+                <div class="box"></div>
+                <div class="box black"></div>
+            </div>
+            <div>
+                <div class="box black"></div>
+                <div class="box"></div>
+                <div class="box black"></div>
+                <div class="box"></div>
+                <div class="box black"></div>
+                <div class="box"></div>
+                <div class="box black"></div>
+                <div class="box"></div>
+            </div>
+            <div>
+                <div class="box"></div>
+                <div class="box black"></div>
+                <div class="box"></div>
+                <div class="box black"></div>
+                <div class="box"></div>
+                <div class="box black"></div>
+                <div class="box"></div>
+                <div class="box black"></div>
+            </div>
+            <div>
+                <div class="box black"></div>
+                <div class="box"></div>
+                <div class="box black"></div>
+                <div class="box"></div>
+                <div class="box black"></div>
+                <div class="box"></div>
+                <div class="box black"></div>
+                <div class="box"></div>
+            </div>
+            <div>
+                <div class="box">&#9823;</div>
+                <div class="box black">&#9823;</div>
+                <div class="box">&#9823;</div>
+                <div class="box black">&#9823;</div>
+                <div class="box">&#9823;</div>
+                <div class="box black">&#9823;</div>
+                <div class="box">&#9823;</div>
+                <div class="box black">&#9823;</div>
+            </div>
+            <div>
+                <div class="box black">&#9820;</div>
+                <div class="box">&#9822;</div>
+                <div class="box black">&#9821;</div>
+                <div class="box">&#9819;</div>
+                <div class="box black">&#9818;</div>
+                <div class="box">&#9821;</div>
+                <div class="box black">&#9822;</div>
+                <div class="box">&#9820;</div>
+            </div>
+        </div>
+
         <div>
             <button onclick="postTransaction()">WinCondition</button>
         </div>
@@ -74,6 +157,7 @@
             };
 
             fetch(apiUrl + '/transaction/broadcast', options);
+            console.log("Transaction Recieved");
         };
     </script>
 
@@ -89,7 +173,7 @@
             --border-radius: 4px;
 
             margin: 0;
-            height: 100vh;
+            height: 150vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -151,6 +235,25 @@
 
         .nav__links li a:hover {
             color: var(--colour-primary-dark);
+        }
+
+        .ChessBoard{
+            margin-left: 70px;
+            margin-top: 10px;
+        }
+
+        .box{
+            width: 75px;
+            height: 75px;
+            border: 1px solid black;
+            display: inline-block;
+            margin: -1.8px;
+            font-size: 50px;
+            text-align: center;
+        }
+
+        .black{
+            background-color: #B475C2;
         }
     </style>
 
