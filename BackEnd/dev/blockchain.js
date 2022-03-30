@@ -71,10 +71,24 @@ Blockchain.prototype.createNewTransaction = function(amount, sender, recipient) 
     return newTransaction;
 }
 
+Blockchain.prototype.createNewAddress = function(login, password) {
+    const newAddress = {
+        login: login,
+        password: password,
+        address: uuidv1().split('-').join('')
+    };
+    return newAddress;
+}
+
 // sendNewTransaction pushes a new transaction object into the pendingTransactions array
 
 Blockchain.prototype.sendNewTransaction = function(newtransaction) {
     this.pendingTransactions.push(newtransaction);
+    return this.getLastBlock(['index']) + 1;
+}
+
+Blockchain.prototype.sendNewAddress = function(newAddress) {
+    this.pendingTransactions.push(newAddress);
     return this.getLastBlock(['index']) + 1;
 }
 

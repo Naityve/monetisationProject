@@ -101,6 +101,8 @@ app.get('/mine',function(req,res) {
 
     const newBlock = Chain.createNewBlock(nonce, lastBlockHash, blockHash);
 
+    console.log(newBlock);
+
     const requestPromises = [];
 
     Chain.networkNodes.forEach(networkNodeUrl => {

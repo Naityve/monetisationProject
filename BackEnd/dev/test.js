@@ -135,8 +135,35 @@ const sampleChain = {
     "currentNodeUrl": "http://localhost:3001",
     "networkNodes": []
     };
+
+    /*
+
+    const newAddress = TestChain.createNewAddress("Jamester", "1234");
+    TestChain.sendNewAddress(newAddress);
+
+    console.log(TestChain);
+
+    */
+
+    const { v1: uuidv1 } = require('uuid');
+    const sha256 = require('sha256');
+
     
-    console.log('Valid: ',TestChain.chainIsValid(sampleChain.chain));
+
+    const sampleAddress = uuidv1().split('-').join('');
+    var checker = false;
+
+    function validator() {
+        for(j=1; j<1000000000; j++) {
+            var val2 = uuidv1().split('-').join('');
+            console.log("checking " + j + " out of 1000000000");
+            if(sampleAddress === val2) {
+                checker = true;
+            };
+        };
+    };
+    validator();
+    console.log(checker);
 
     /*
         CODE TO FETCH GET AND POST REQUESTS FROM CLIENT TO API
