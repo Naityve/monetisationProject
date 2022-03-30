@@ -148,8 +148,49 @@ const sampleChain = {
     const { v1: uuidv1 } = require('uuid');
     const sha256 = require('sha256');
 
-    
+    const previousBlockHash = sha256(uuidv1().split('-').join(''));
 
+    const currentBlockData = [
+        { transactions: [], index: 2 },
+        {
+      index: 2,
+      timestamp: 1648643325063,
+      transactions: [],
+      nonce: 85021,
+      hash: '00000533d7b3de42c4051cc52167cd46812b0312bebd30c2a114859eecc6202f',
+      previousBlockHash: '0'
+        }
+    ]
+
+    function hashBlock (previousBlockHash, currentBlockData, nonce) {
+        const dataAsString = previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData); //Combines function parameters into a single string
+        const hash = sha256(dataAsString); //creates a single string hash of dataAsString
+        
+        return hash;
+    }
+
+    function proofOfWork(previousBlockHash, currentBlockData) {
+        let nonce = 0;
+        let hash = hashBlock(previousBlockHash, currentBlockData, nonce);
+        let loop = 1;
+    
+        while(hash.substring(0,5) != '00000') {
+            nonce++;
+            hash = hashBlock(previousBlockHash, currentBlockData, nonce);
+            console.log("this is loop: " + loop);
+            loop++;
+        }
+    
+        return nonce;
+    }
+
+    nonceCount=proofOfWork(previousBlockHash, currentBlockData);
+
+    console.log(nonceCount);
+
+
+
+    /*
     const sampleAddress = uuidv1().split('-').join('');
     var checker = false;
 
@@ -164,6 +205,8 @@ const sampleChain = {
     };
     validator();
     console.log(checker);
+
+    */
 
     /*
         CODE TO FETCH GET AND POST REQUESTS FROM CLIENT TO API
