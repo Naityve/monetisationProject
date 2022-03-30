@@ -174,7 +174,7 @@ const sampleChain = {
         let hash = hashBlock(previousBlockHash, currentBlockData, nonce);
         let loop = 1;
     
-        while(hash.substring(0,5) != '00000') {
+        while(hash.substring(0,6) != '000000') {
             nonce++;
             hash = hashBlock(previousBlockHash, currentBlockData, nonce);
             console.log("this is loop: " + loop);
