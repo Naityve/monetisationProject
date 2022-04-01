@@ -343,25 +343,25 @@ app.get('/address/:address', function(req,res) {
 
 // Retruns game.html to the client
 
-app.get('/game', function(req, res) {
+app.get('/game.html', function(req, res) {
     res.sendFile('./FrontEnd/game.html', {root: __dirname});
 });
 
 // Retruns wallet.html to the client
 
-app.get('/wallet', function(req,res) {
+app.get('/wallet.html', function(req,res) {
     res.sendFile('./FrontEnd/wallet.html', {root: __dirname});
 });
 
 // Retruns index.html to the client
 
-app.get('/index', function(req,res) {
+app.get('/index.html', function(req,res) {
     res.sendFile('./FrontEnd/index.html', {root: __dirname});
 });
 
 // Retruns login.html to the client
 
-app.get('/login', function(req,res) {
+app.get('/login.html', function(req,res) {
     res.sendFile('./FrontEnd/login.html', {root: __dirname});
 });
 
