@@ -62,20 +62,26 @@ Blockchain.prototype.getLastBlock = function() {
 // createNewTransaction generates a transaction object
 
 Blockchain.prototype.createNewTransaction = function(amount, sender, recipient, privateKey) {
+    
+    hashedPrivateKey = String(sha256(privateKey));
+
     const newTransaction = {
         amount: amount,
         sender: sender,
         recipient: recipient,
-        privateKey: sha256(privateKey),
+        privateKey: hashedPrivateKey,
         transactionId: uuidv1().split('-').join('')
     };
     return newTransaction;
 }
 
 Blockchain.prototype.createNewAddress = function(login, password) {
+    
+    hashedPrivateKey = String(sha256(password));
+
     const newAddress = {
         login: login,
-        password: password,
+        password: hashedPrivateKey,
         address: uuidv1().split('-').join('')
     };
     return newAddress;
@@ -105,7 +111,7 @@ Blockchain.prototype.proofOfWork = function(previousBlockHash, currentBlockData)
     let nonce = 0;
     let hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
 
-    while(hash.substring(0,5) != '00000') {
+    while(hash.substring(0,4) != '0000') {
         nonce++;
         hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
     }

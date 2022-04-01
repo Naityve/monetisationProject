@@ -146,7 +146,8 @@ app.get('/mine',function(req,res) {
             body: {
                 amount: 100,
                 sender: "00",
-                recipient: nodeAddress
+                recipient: nodeAddress,
+                privateKey: "00"
             },
             json: true
         };
