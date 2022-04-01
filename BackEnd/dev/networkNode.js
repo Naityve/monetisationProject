@@ -84,6 +84,28 @@ app.post('/transaction/broadcast', function(req, res) {
     });
 });
 
+app.post('/transaction/newAddress/broadcast', function(req, res) {
+    const newAddress = Chain.createNewAddress(req.body.login, req.body.password);
+    Chain.sendNewAddress(newAddress);
+
+    const requestPromises=[];
+
+    Chain.networkNodes.forEach(networkNodeUrl => {
+        const requestOptions = {
+            uri : networkNodeUrl + '/transaction',
+            method: 'POST',
+            body: newAddress,
+            json: true
+        };
+
+        requestPromises.push(rp(requestOptions));
+    });
+
+    Promise.all(requestPromises).then(data => {
+        res.json({ note: 'Transaction created and broadcast SUCCESS.'});
+    });
+});
+
 //
 
 app.get('/mine',function(req,res) {
