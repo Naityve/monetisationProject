@@ -61,11 +61,12 @@ Blockchain.prototype.getLastBlock = function() {
 
 // createNewTransaction generates a transaction object
 
-Blockchain.prototype.createNewTransaction = function(amount, sender, recipient) {
+Blockchain.prototype.createNewTransaction = function(amount, sender, recipient, privateKey) {
     const newTransaction = {
         amount: amount,
         sender: sender,
         recipient: recipient,
+        privateKey: sha256(privateKey),
         transactionId: uuidv1().split('-').join('')
     };
     return newTransaction;

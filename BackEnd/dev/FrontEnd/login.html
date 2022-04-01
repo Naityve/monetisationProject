@@ -120,7 +120,7 @@
                 function postTransaction() {
 
                     const transactionData = {
-                        login: "Bob",
+                        login: document.getElementById("loginUsername"),
                         password: "HelloWorld"
                     };
 
@@ -135,6 +135,7 @@
 
                     fetch(apiUrl + '/transaction/newAddress/broadcast', options);
                     console.log("Transaction Recieved");
+                    
                 };
 
                 postTransaction();

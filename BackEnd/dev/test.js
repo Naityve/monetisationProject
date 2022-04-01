@@ -174,13 +174,16 @@ const sampleChain = {
         let hash = hashBlock(previousBlockHash, currentBlockData, nonce);
         let loop = 1;
     
-        while(hash.substring(0,6) != '000000') {
+        hashArray =[];
+
+        while(hash.substring(0,4) != '0000') {
             nonce++;
             hash = hashBlock(previousBlockHash, currentBlockData, nonce);
-            console.log("this is loop: " + loop);
+            console.log("this is loop: " + loop + " " + hash);
             loop++;
+            hashArray.push(hash);
         }
-    
+
         return nonce;
     }
 
