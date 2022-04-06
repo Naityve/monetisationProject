@@ -74,7 +74,7 @@ Blockchain.prototype.createNewTransaction = function(amount, sender, recipient, 
     };
     return newTransaction;
 }
-
+ 
 Blockchain.prototype.createNewAddress = function(login, password) {
     
     hashedPrivateKey = String(sha256(password));
