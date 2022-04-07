@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "ip_node": "nodemon --watch dev -e js dev/networkNode.js 3200 http://192.168.1.63:3001",
+    "ip_node": "nodemon --watch dev -e js dev/networkNode.js 3200 http://192.168.1.32:3200",
     "node_1": "nodemon --watch dev -e js dev/networkNode.js 3001 http://localhost:3001",
     "node_2": "nodemon --watch dev -e js dev/networkNode.js 3002 http://localhost:3002",
     "node_3": "nodemon --watch dev -e js dev/networkNode.js 3003 http://localhost:3003",
