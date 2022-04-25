@@ -1,5 +1,5 @@
 /*
-
+    Kacper Florek 2022
 */
 
 
@@ -75,6 +75,8 @@ Blockchain.prototype.createNewTransaction = function(amount, sender, recipient, 
     return newTransaction;
 }
  
+// createNewAddress generates an address object
+
 Blockchain.prototype.createNewAddress = function(login, password) {
     
     hashedPrivateKey = String(sha256(password));
@@ -94,6 +96,8 @@ Blockchain.prototype.sendNewTransaction = function(newtransaction) {
     return this.getLastBlock(['index']) + 1;
 }
 
+// sendNewAddress pushes a new address object into the pendingTransactions array
+
 Blockchain.prototype.sendNewAddress = function(newAddress) {
     this.pendingTransactions.push(newAddress);
     return this.getLastBlock(['index']) + 1;
@@ -101,17 +105,19 @@ Blockchain.prototype.sendNewAddress = function(newAddress) {
 
 
 Blockchain.prototype.hashBlock = function(previousBlockHash, currentBlockData, nonce) {
-    const dataAsString = previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData); //Combines function parameters into a single string
-    const hash = sha256(dataAsString); //creates a single string hash of dataAsString
+    const hashData = previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData); //Combines function parameters into a single string
+    const hash = sha256(hashData); //creates a single string hash of hashData
     
     return hash;
 }
+
+// Proof-of-work implementation using the Bitocin zero-leading hashing method
 
 Blockchain.prototype.proofOfWork = function(previousBlockHash, currentBlockData) {
     let nonce = 0;
     let hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
 
-    while(hash.substring(0,4) != '0000') {
+    while(hash.substring(0,5) != '00000') {
         nonce++;
         hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
     }
@@ -132,9 +138,6 @@ Blockchain.prototype.chainIsValid = function(chain) {
             transactions: currentBlock['transactions'],
             index: currentBlock['index']
         }
-        const blockHash = this.hashBlock(previousBlock['hash'], currentBlockData, currentBlock['nonce']);
-
-        if (blockHash.substring(0,4) !== '0000') validChain = false;
 
         if (currentBlock['previousBlockHash'] !== previousBlock['hash']) validChain = false;
     };

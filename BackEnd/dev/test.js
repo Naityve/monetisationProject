@@ -1,3 +1,7 @@
+/*
+    Kacper Florek 2022
+*/
+
 const Blockchain = require("./blockchain");
 const rp = require('request-promise');
 

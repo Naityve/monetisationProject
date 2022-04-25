@@ -1,5 +1,5 @@
 /*
-
+    Kacper Florek 2022
 */
 
 
@@ -62,6 +62,9 @@ app.post('/transaction', function(req,res) {
     res.json({ note : `Transaction will be added in block ${blockIndex}` });
 });
 
+//Create a new transaction, add it to the current nodes pendingTransactions array and broadcast the transaction to the rest
+//of the network
+
 app.post('/transaction/broadcast', function(req, res) {
     const newTransaction = Chain.createNewTransaction(req.body.amount, req.body.sender, req.body.recipient, req.body.privateKey);
     Chain.sendNewTransaction(newTransaction);
@@ -83,6 +86,9 @@ app.post('/transaction/broadcast', function(req, res) {
         res.json({ note: 'Transaction created and broadcast SUCCESS.'});
     });
 });
+
+//Create a new address, add it to the current nodes pendingTransactions array and broadcast the address transaction to the rest
+//of the network
 
 app.post('/transaction/newAddress/broadcast', function(req, res) {
     const newAddress = Chain.createNewAddress(req.body.login, req.body.password);
@@ -106,7 +112,7 @@ app.post('/transaction/newAddress/broadcast', function(req, res) {
     });
 });
 
-//
+// Proof-of-Work
 
 app.get('/mine',function(req,res) {
     const lastBlock = Chain.getLastBlock();
@@ -165,6 +171,8 @@ app.get('/mine',function(req,res) {
     console.log(`\n////////////////////////////////\nNew Block Mined. Block No: ${lastBlock['index'] + 1}\n////////////////////////////////`);
 
 });
+
+//take in a new broadcast block and verify its integrity then push the new block to the local chain instance
 
 app.post('/receive-new-block', function(req,res) {
     const newBlock = req.body.newBlock;
